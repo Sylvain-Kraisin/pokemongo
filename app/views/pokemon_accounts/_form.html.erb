@@ -1,6 +1,6 @@
 <%= simple_form_for @account do |f| %>
-  <%= f.input :email, input_html: {maxlength: 50} %>
-  <%= f.input :password %>
-  <%= f.input :adress %>
-  <%= f.button :submit %>
+  <%= f.input :email, input_html: {maxlength: 50, placeholder:'Mon identifiant Pokemon GO'}, label: 'Identifiant' %>
+  <%= f.input :password, placeholder:'Mon mot de passe Pokemon GO', label: 'Mot de Passe' %>
+  <%= f.input :adress, placeholder:'Mon adresse actuelle', label: 'Adresse' %>
+  <%= f.button :submit, 'Lier mon compte' %>
 <% end %>

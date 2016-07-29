@@ -1,2 +1,9 @@
-<p>NEW (form)</p>
-<%= render 'form' %>
+<div class="col-xs-6 col-xs-offset-3">
+  <h2>Lier mon compte POKEMON GO</h2>
+  <% if current_user.pokemon_account.present? %>
+  <p>Compte deja lié</p>
+  <h3><%= link_to 'Voir mon profil', pokemon_account_path(current_user.pokemon_account.id) %></h3>
+  <% else %>
+  <%= render 'form' %>
+  <% end %>
+</div>

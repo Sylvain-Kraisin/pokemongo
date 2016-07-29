@@ -7,6 +7,7 @@ class PokemonAccountsController < ApplicationController
 
     def create
       @account = PokemonAccount.new(account_params)
+      @account.user_id = current_user.id
 
       if @account.save
         redirect_to pokemon_account_path(@account)
@@ -23,6 +24,21 @@ class PokemonAccountsController < ApplicationController
     end
 
     def show
+      @client = Poke::API::Client.new
+      @client.store_location(@account.adress)
+      @client.login(@account.email, @account.password, 'google')
+      # # Add RPC calls
+      @client.get_player
+      # # You can inspect the client before performing the call
+      # puts @client.inspect
+      
+      # # Perform your RPC call
+      @call = @client.call
+      # # A <Poke::API::Response> object is returned and decorated with your request and response in a Hash format
+      # # Request
+      # puts @call.request.inspect
+      # # Response
+      # puts @call.response.inspect
     end
 
     def update
