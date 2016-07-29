@@ -29,6 +29,9 @@ gem 'poke-api',
     tag: '0.0.4'
 
 gem 'devise'
+
+gem 'bootstrap-sass'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
