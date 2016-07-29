@@ -1,1 +1,8 @@
-<p>Hello Pokemon</p>
+<div class="text-center">
+  <% if user_signed_in? %>
+    <h2><%= link_to 'Renseigne tes identifiants POKEMON GO', new_pokemon_account_path %><h2>
+  <% else %>
+    <h2>Bienvenue Dresseur</h2>
+    <h4>Pour commencer, inscris-toi ou connecte-toi !</h4>
+  <% end %>
+</div>

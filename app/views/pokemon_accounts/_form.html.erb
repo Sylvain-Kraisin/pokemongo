@@ -1,0 +1,6 @@
+<%= simple_form_for @account do |f| %>
+  <%= f.input :email, input_html: {maxlength: 50} %>
+  <%= f.input :password %>
+  <%= f.input :adress %>
+  <%= f.button :submit %>
+<% end %>
