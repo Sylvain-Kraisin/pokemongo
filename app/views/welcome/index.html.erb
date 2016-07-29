@@ -1,6 +1,10 @@
 <div class="text-center">
   <% if user_signed_in? %>
+    <% if current_user.pokemon_account.present? %>
+      <h3><%= link_to 'Voir mon profil', pokemon_account_path(current_user.pokemon_account.id) %></h3>
+    <% else %>
     <h2><%= link_to 'Renseigne tes identifiants POKEMON GO', new_pokemon_account_path %><h2>
+    <% end %>
   <% else %>
     <h2>Bienvenue Dresseur</h2>
     <h4>Pour commencer, inscris-toi ou connecte-toi !</h4>
