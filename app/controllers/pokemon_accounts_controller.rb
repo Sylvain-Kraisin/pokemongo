@@ -9,7 +9,7 @@ class PokemonAccountsController < ApplicationController
       @account = PokemonAccount.new(account_params)
 
       if @account.save
-        redirect_to account_path
+        redirect_to pokemon_account_path(@account)
       else
         render 'new'
       end
