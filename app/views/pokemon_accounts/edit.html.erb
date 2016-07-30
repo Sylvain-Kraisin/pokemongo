@@ -1,1 +1,8 @@
 <p>EDIT (form)</p>
+
+<%= simple_form_for @account do |f| %>
+  <%= f.input :email, input_html: {maxlength: 50, placeholder:'Mon identifiant Pokemon GO'}, label: 'Identifiant' %>
+  <%= f.input :password, placeholder:'Mon mot de passe Pokemon GO', label: 'Mot de Passe' %>
+  <%= f.input :adress, placeholder:'Mon adresse actuelle', label: 'Adresse' %>
+  <%= f.button :submit, 'Mettre à jour mon compte' %>
+<% end %>

@@ -1,3 +1,40 @@
-<p>SHOW</p>
+<div class="text-center">
+  <h2 class="text-center">Mon Profil</h2>
+  <div class="col-xs-12">
+    <img src="<%= asset_path('trainer.png') %>" class="img-responsive center-block"></img>
+  <strong>
+    <p><%= @call.response[:GET_PLAYER][:player_data][:username]%></p>
+    <p><%= @call.response[:GET_PLAYER][:player_data][:avatar][:gender]%></p>
+    <p>TEAM <%= @call.response[:GET_PLAYER][:player_data][:team]%></p>
+    <br><br>
+  </strong>
+  </div>
 
-<%= @call.response.inspect %>
+
+
+  <h2 class="text-center">Mes Pokemons</h2>
+
+  <% i = 0 %>
+    <% @inventory.each do |item| %>
+        <% i += 1 %>
+        <% if !item[:inventory_item_data][:pokemon_data].nil? %>
+          <div class="col-xs-12 col-md-4 height_244">
+
+          <% if item[:inventory_item_data][:pokemon_data][:is_egg] == true %>
+            <h3><%= i %> EGG</h3>
+          <img src="<%= asset_path('poke_egg.png') %>" class="img-responsive center-block"></img>
+            <h4>Need: <%= item[:inventory_item_data][:pokemon_data][:egg_km_walked_target] %> km</h4>
+            <h4>__</h4>
+          <% else %>
+
+            <h3><%= i %> <%= item[:inventory_item_data][:pokemon_data][:pokemon_id] %></h3>
+
+            <img src="<%= asset_path('pkmn.png') %>" class="img-responsive center-block"></img>
+            <h4>CP: <%= item[:inventory_item_data][:pokemon_data][:cp] %>
+            <h4>Stamina: <%= item[:inventory_item_data][:pokemon_data][:stamina] %>
+          <% end %>
+          </div>
+        <% end %>
+
+    <% end %>
+</div>

@@ -1,4 +1,5 @@
 class PokemonAccountsController < ApplicationController
+  require 'pp'
     before_action :find_account, only: [:show, :edit, :update]
     before_filter :authenticate_user!, only: [:new, :create, :show]
 
@@ -29,14 +30,20 @@ class PokemonAccountsController < ApplicationController
       @client.login(@account.email, @account.password, 'google')
       # # Add RPC calls
       @client.get_player
+      @client.get_inventory
       # # You can inspect the client before performing the call
       # puts @client.inspect
-      
+
       # # Perform your RPC call
       @call = @client.call
       # # A <Poke::API::Response> object is returned and decorated with your request and response in a Hash format
       # # Request
-      # puts @call.request.inspect
+      @inventory = @call.response[:GET_INVENTORY][:inventory_delta][:inventory_items]
+
+      @pokemons = []
+      @candies = {}
+      @items = {}
+      @pokedex = {}
       # # Response
       # puts @call.response.inspect
     end
