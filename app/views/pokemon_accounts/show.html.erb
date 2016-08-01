@@ -18,18 +18,21 @@
     <% @inventory.each do |item| %>
         <% if !item[:inventory_item_data][:pokemon_data].nil? %>
 
-          <div class="col-xs-12 col-md-4 height_244">
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 height_244">
 
           <% if item[:inventory_item_data][:pokemon_data][:is_egg] == true %>
             <h3><%= t('EGG') %></h3>
-          <img src="<%= asset_path('poke_egg.png') %>" class="img-responsive center-block"></img>
+          <img src="<%= asset_path('poke_egg.png') %>" class="img-responsive center-block height_100"></img>
             <h4>Need: <%= item[:inventory_item_data][:pokemon_data][:egg_km_walked_target] %> km</h4>
             <h4>__</h4>
           <% else %>
 
-            <h3><%= I18n.t(item[:inventory_item_data][:pokemon_data][:pokemon_id]) %></h3>
-
-            <img src="<%= asset_path('pkmn.png') %>" class="img-responsive center-block"></img>
+            <h3><%= t(item[:inventory_item_data][:pokemon_data][:pokemon_id]) %></h3>
+            <% if !asset_path(((item[:inventory_item_data][:pokemon_data][:pokemon_id]).to_s) + '.jpg').nil? %>
+              <img src="<%= asset_path(((item[:inventory_item_data][:pokemon_data][:pokemon_id]).to_s) + '.jpg') %>" class="img-responsive center-block height_100"></img>
+            <% else %>
+              <img src="<%= asset_path('pkmn.png') %>" class="img-responsive center-block height_100"></img>
+            <% end %>
             <h4>CP: <%= item[:inventory_item_data][:pokemon_data][:cp] %>
             <h4>Stamina: <%= item[:inventory_item_data][:pokemon_data][:stamina] %>
           <% end %>

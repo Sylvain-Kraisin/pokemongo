@@ -26,7 +26,7 @@ class PokemonAccountsController < ApplicationController
 
     def show
       @client = Poke::API::Client.new
-      @client.store_location(@account.adress)
+      # @client.store_location(@account.adress)
       @client.login(@account.email, @account.password, 'google')
       # # Add RPC calls
       @client.get_player

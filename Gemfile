@@ -28,11 +28,15 @@ gem 'poke-api',
     git: "https://github.com/nabeelamjad/poke-api.git",
     tag: '0.0.4'
 
+
 gem 'devise'
 
 gem 'bootstrap-sass'
 
 gem 'simple_form'
+
+#auto detect browser language
+gem 'http_accept_language'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
