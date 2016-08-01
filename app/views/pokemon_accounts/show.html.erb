@@ -16,18 +16,18 @@
 
   <% i = 0 %>
     <% @inventory.each do |item| %>
-        <% i += 1 %>
         <% if !item[:inventory_item_data][:pokemon_data].nil? %>
+
           <div class="col-xs-12 col-md-4 height_244">
 
           <% if item[:inventory_item_data][:pokemon_data][:is_egg] == true %>
-            <h3><%= i %> EGG</h3>
+            <h3><%= t('EGG') %></h3>
           <img src="<%= asset_path('poke_egg.png') %>" class="img-responsive center-block"></img>
             <h4>Need: <%= item[:inventory_item_data][:pokemon_data][:egg_km_walked_target] %> km</h4>
             <h4>__</h4>
           <% else %>
 
-            <h3><%= i %> <%= item[:inventory_item_data][:pokemon_data][:pokemon_id] %></h3>
+            <h3><%= I18n.t(item[:inventory_item_data][:pokemon_data][:pokemon_id]) %></h3>
 
             <img src="<%= asset_path('pkmn.png') %>" class="img-responsive center-block"></img>
             <h4>CP: <%= item[:inventory_item_data][:pokemon_data][:cp] %>
@@ -37,4 +37,12 @@
         <% end %>
 
     <% end %>
+    <br><br>
 </div>
+<br><br>
+<% @inventory.each do |item| %>
+<% if !item[:inventory_item_data][:pokemon_data].nil? %>
+<%= item[:inventory_item_data][:pokemon_data] %>
+<% end %>
+<% end %>
+<br><br>
